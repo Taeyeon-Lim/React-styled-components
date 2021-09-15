@@ -20,3 +20,5 @@
 
 - Add button size(default: medium, small, gray)
 - size ref 리팩토링
+
+- Add outline, fullwidth 속성
