@@ -1,6 +1,24 @@
 import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
 
+// 색상 관련 분리
+const colorStyles = css`
+  /* 색상 */
+  ${({ theme, color }) => {
+    const selected = theme.palette[color];
+
+    return css`
+      background: ${selected};
+      &:hover {
+        background: ${lighten(0.1, selected)};
+      }
+      &:active {
+        background: ${darken(0.1, selected)};
+      }
+    `;
+  }}
+`;
+
 const StyledButton = styled.button`
   /* 공통 스타일 */
   /* display: inline-flex; */
@@ -17,21 +35,7 @@ const StyledButton = styled.button`
   height: 2.25rem;
   font-size: 1rem;
 
-  /* 색상 */
-  ${props => {
-    const color = props.theme.palette[props.color];
-
-    return css`
-      background: ${color};
-      &:hover {
-        background: ${lighten(0.1, color)};
-      }
-      &:active {
-        background: ${darken(0.1, color)};
-      }
-    `;
-  }}
-
+  ${colorStyles};
   /* 기타 */
   & + & {
     margin-left: 1rem;
