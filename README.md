@@ -14,5 +14,8 @@
 
 - polished 버튼 스타일링
 - Use 'ThemeProvider from styled-component'
-- Add button (default: blue, gray, pink)
+
+- Add button color(default: blue, gray, pink)
 - color ref 리팩토링
+
+- Add button size(default: medium, small, gray)

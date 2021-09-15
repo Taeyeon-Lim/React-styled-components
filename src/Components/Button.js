@@ -3,7 +3,6 @@ import { darken, lighten } from 'polished';
 
 // 색상 관련 분리
 const colorStyles = css`
-  /* 색상 */
   ${({ theme, color }) => {
     const selected = theme.palette[color];
 
@@ -19,6 +18,30 @@ const colorStyles = css`
   }}
 `;
 
+// 크기 관련 분리
+const sizeStyles = css`
+  ${props =>
+    props.size === 'small' &&
+    css`
+      height: 1.75rem;
+      font-size: 0.875rem;
+    `}
+
+  ${props =>
+    props.size === 'medium' &&
+    css`
+      height: 2.25rem;
+      font-size: 1rem;
+    `}
+
+  ${props =>
+    props.size === 'large' &&
+    css`
+      height: 3rem;
+      font-size: 1.25rem;
+    `}
+`;
+
 const StyledButton = styled.button`
   /* 공통 스타일 */
   /* display: inline-flex; */
@@ -31,26 +54,28 @@ const StyledButton = styled.button`
   padding-left: 1rem;
   padding-right: 1rem;
 
-  /* 크기 */
-  height: 2.25rem;
-  font-size: 1rem;
+  // 사이즈
+  ${sizeStyles}
 
-  ${colorStyles};
+  // 색상
+  ${colorStyles}
+
   /* 기타 */
   & + & {
     margin-left: 1rem;
   }
 `;
 
-function Button({ children, color, ...rest }) {
+function Button({ children, color, size, ...rest }) {
   return (
-    <StyledButton color={color} {...rest}>
+    <StyledButton color={color} size={size} {...rest}>
       {children}
     </StyledButton>
   );
 }
 
 Button.defaultProps = {
+  size: 'medium',
   color: 'blue',
 };
 
