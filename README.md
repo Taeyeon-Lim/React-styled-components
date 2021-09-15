@@ -19,3 +19,4 @@
 - color ref 리팩토링
 
 - Add button size(default: medium, small, gray)
+- size ref 리팩토링

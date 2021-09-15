@@ -27,7 +27,7 @@ function App() {
     <ThemeProvider theme={{ palette }}>
       <AppBlock>
         <ButtonGroup>
-          <Button color='gray' size='samll'>
+          <Button color='gray' size='small'>
             BUTTON
           </Button>
           <Button>BUTTON</Button>
