@@ -38,4 +38,8 @@
 - remove all button
 - Add button, dialog(modal, button skin)
 - Add dialog transition(use 'keyframes')
-- Add dialog transition "취소/삭제" state 관리
+- Add dialog transition 상태 관리
+  // "fadeIn + slideUp" <=> "fadeOut + slideDown"  
+  animate: 현재 애니메이션 실행 여부  
+  localVisible: dialog 자체 관리, visible 상태 전환 시점 catch  
+
