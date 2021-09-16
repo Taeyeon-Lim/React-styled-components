@@ -55,7 +55,7 @@ const sizeStyles = css`
 
 const fullWidthStyle = css`
   ${props =>
-    props.fullWitdh &&
+    props.fullWidth &&
     css`
       width: 100%;
       justify-content: center;
@@ -79,18 +79,17 @@ const StyledButton = styled.button`
   padding-left: 1rem;
   padding-right: 1rem;
 
-  /* 기타 */
   & + & {
     margin-left: 1rem;
   }
 
-  // 사이즈
-  ${sizeStyles}
-
   // 색상
   ${colorStyles}
 
-  // fullwitdh 속성
+  // 사이즈
+  ${sizeStyles}
+
+  // fullWidth 속성
   ${fullWidthStyle}
 `;
 
@@ -99,7 +98,7 @@ function Button({
   color,
   size,
   outline,
-  fullWitdh,
+  fullWidth,
   ...rest
 }) {
   return (
@@ -107,7 +106,7 @@ function Button({
       color={color}
       size={size}
       outline={outline}
-      fullWitdh={fullWitdh}
+      fullWidth={fullWidth}
       {...rest}
     >
       {children}
