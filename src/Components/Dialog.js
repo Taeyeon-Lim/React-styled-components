@@ -1,5 +1,26 @@
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import Button from './Button';
+
+// 서서히 나타나는 효과
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+// 위로 올라오는 효과
+const slideUp = keyframes`
+  from {
+    transform: translateY(200px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+`;
 
 const DarkBackground = styled.div`
   position: fixed;
@@ -11,6 +32,11 @@ const DarkBackground = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.8);
+
+  animation: 0.25s;
+  animation-timing-function: ease-out;
+  animation-name: ${fadeIn};
+  animation-fill-mode: forwards;
 `;
 
 const DialogBlock = styled.div`
@@ -27,6 +53,11 @@ const DialogBlock = styled.div`
   p {
     font-size: 1.125rem;
   }
+
+  animation: 0.25s;
+  animation-timing-function: ease-out;
+  animation-name: ${slideUp};
+  animation-fill-mode: forwards;
 `;
 
 const ButtonGroup = styled.div`
@@ -51,7 +82,19 @@ function Dialog({
   onConfirm,
   onCancel,
 }) {
-  if (!visible) return null;
+  const [animate, setAnimate] = useState(false);
+  const [localVisible, setLocalVisible] = useState(visible);
+
+  useEffect(() => {
+    // visible true -> false
+    if (localVisible && !visible) {
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 250);
+    }
+    setLocalVisible(visible);
+  }, [localVisible, visible]);
+
+  if (!localVisible && !animate) return null;
 
   return (
     <DarkBackground>
