@@ -35,4 +35,5 @@
   // 기타  
   현재, 5.3.1 버전까지도 같은 오류(?)가 있음
 
-- Add dialog
+- remove all button
+- Add button, dialog(modal, button skin)

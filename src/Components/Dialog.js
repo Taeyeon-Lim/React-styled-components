@@ -35,23 +35,34 @@ const ButtonGroup = styled.div`
   justify-content: flex-end;
 `;
 
+// 버튼을 상속받아 스타일 재정의
 const ShortMarginButton = styled(Button)`
   & + & {
     margin-left: 0.5rem;
   }
 `;
 
-function Dialog({ title, children, confirmText, cancelText }) {
+function Dialog({
+  title,
+  children,
+  confirmText,
+  cancelText,
+  visible,
+  onConfirm,
+  onCancel,
+}) {
+  if (!visible) return null;
+
   return (
     <DarkBackground>
       <DialogBlock>
         <h3>{title}</h3>
         <p>{children}</p>
         <ButtonGroup>
-          <ShortMarginButton color='gray'>
+          <ShortMarginButton color='gray' onClick={onCancel}>
             {cancelText}
           </ShortMarginButton>
-          <ShortMarginButton color='pink'>
+          <ShortMarginButton color='pink' onClick={onConfirm}>
             {confirmText}
           </ShortMarginButton>
         </ButtonGroup>
